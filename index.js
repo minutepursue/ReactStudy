@@ -1,12 +1,17 @@
 const express = require('express')
 var cors = require('cors')
+
+var favicon = require('serve-favicon')
+var path = require('path')
+
 const app = express()
 const port = 3000
 
 app.use(cors())
+app.use(favicon(path.join(__dirname, '', 'favicon.ico')))
 
 app.get('/', (req, res) => {
-  res.send('Hello 윤기형')
+  res.send('Hello !')
 })
 
 app.get('/sound/:name', (req, res) => {
