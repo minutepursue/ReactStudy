@@ -6,7 +6,7 @@ const port = 3000
 app.use(cors())
 
 app.get('/', (req, res) => {
-  res.send('Hello !')
+  res.send('Hello 윤기형')
 })
 
 app.get('/sound/:name', (req, res) => {
