@@ -26,15 +26,20 @@ domeggook_data = '?'+Object.entries(domeggook_data).map(e => e.join('=')).join('
 app.get('/', (req, res) => {
   // res.send('Hello !')
 
+let domeggook_list;
+
   fetch(domeggook_url+domeggook_data)
   .then(response => {
     return response.json();
   })
   .then(data => {
-    console.log(data);
+    console.log(data.domeggook);
+    domeggook_list=data.domeggook;
   })
   .catch((error) => console.log("error:", error))
   
+  res.json(domeggook_list);
+
 })
 
 app.get('/sound/:name', (req, res) => {
