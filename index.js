@@ -10,21 +10,21 @@ const port = 3000
 app.use(cors())
 app.use(favicon(path.join(__dirname, '', 'favicon.ico')))
 
+const domeggook_url = 'https://domeggook.com/ssl/api'
+
+let domeggook_data = {
+  'ver': "4.1",
+  'mode': "getItemList",
+  'aid': "20510fee5308ad18be75ee39914d1f37",
+  'market': "dome",
+  'om': "json",
+  'ca': '01_01_00_00_00'
+}
+
+domeggook_data = '?'+Object.entries(domeggook_data).map(e => e.join('=')).join('&')
+
 app.get('/', (req, res) => {
-  res.send('Hello !')
-
-  const domeggook_url = 'https://domeggook.com/ssl/api'
-
-  let domeggook_data = {
-    'ver': "4.1",
-    'mode': "getItemList",
-    'aid': "20510fee5308ad18be75ee39914d1f37",
-    'market': "dome",
-    'om': "json",
-    'ca': '01_01_00_00_00'
-  }
-
-  domeggook_data = '?'+Object.entries(domeggook_data).map(e => e.join('=')).join('&')
+  // res.send('Hello !')
 
   fetch(domeggook_url+domeggook_data)
   .then(response => {
